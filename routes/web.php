@@ -19,15 +19,23 @@ Route::get('/about', function(){
 });
 
 Route::post('/twoots', function(){
-	Twoot::create([
-		'text' => request()->text.' blabla '. time()
-	]);
+	if(request()->text){
+		Twoot::create([
+			'text' => request()->text.' blabla '. time()
+		]);	
+	}
 	return redirect()->to('/');
    // Twoot::______([
    //     'text' => request()->____
    // ]);
 
    // return redirect()->to('_');
+});
+
+Route::get('twoots/{id}', function($id){
+	return view('fullView')->with([
+		'twoot' => Twoot::find($id)
+	]);
 });
 
 Route::delete('twoots/{id}', function($id){
