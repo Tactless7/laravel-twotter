@@ -14,7 +14,7 @@
                 <hr class="my-4">
 
 
-                <a href="#">About</a>
+                <a href="/about">About</a>
 
 
             </div>
@@ -32,7 +32,7 @@
 
 
                     <!-- Ici, on a accès à la variable $twoot ! -->
-                    <h4 class="card-title">Il faudrait faire un tour dans app.blade.php pour que ce texte soit dynamique.</h4>
+                    <h4 class="card-title">{{$twoot->text}}</h4>
 
 
                     <form action="{{ url("/twoots/$twoot->id") }}" method="POST">
