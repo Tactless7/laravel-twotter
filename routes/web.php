@@ -5,7 +5,7 @@ use App\Twoot;
 Route::get('/', function () {
     // Récupérer tous les "twoots" et les ajouter à la vue
     return view('app')->with([
-        'twoots' => [] //Twoot::___()
+        'twoots' => Twoot::all()
     ]);
 });
 
@@ -14,12 +14,20 @@ Route::get('/', function () {
 //    return ____; //Renvoyer la vue 'about' !
 //});
 
-Route::post('twoots', function(){
-//    Twoot::______([
-//        'text' => request()->____
-//    ]);
-//
-//    return redirect()->to('_');
+Route::get('/about', function(){
+	return view('about');
+});
+
+Route::post('/twoots', function(){
+	Twoot::create([
+		'text' => request()->text
+	]);
+	return redirect()->to('/');
+   // Twoot::______([
+   //     'text' => request()->____
+   // ]);
+
+   // return redirect()->to('_');
 });
 
 Route::delete('twoots/{id}', function($id){
