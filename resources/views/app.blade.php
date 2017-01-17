@@ -32,7 +32,7 @@
 
 
                     <!-- Ici, on a accès à la variable $twoot ! -->
-                    <h4 class="card-title">{{$twoot->text}}</h4>
+                    <h4 class="card-title"><a href="{{ url("/twoots/$twoot->id") }}">{{$twoot->text}}</a></h4>
 
 
                     <form action="{{ url("/twoots/$twoot->id") }}" method="POST">
@@ -41,7 +41,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-muted">
-                    Créé il y a pas longtemps
+                    {{$twoot->created_at->diffForHumans()}}
                 </div>
             </div>
         @endforeach
